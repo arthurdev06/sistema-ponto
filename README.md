@@ -1,3 +1,8 @@
+<details>
+<summary>
+PT-BR:  
+</summary>
+
 # Sistema de Ponto
 
 ## Descrição
@@ -61,3 +66,74 @@ Um dia estava usando o sistema de ponto da empresa que trabalho e como sempre, e
 - [ ] Configuração de horários
   - [ ] Criar uma página de configuração de horários.(parte do supervisor)
 - [ ] Mostrar calendário com feriados e dias úteis, usando uma api de calendário.
+</details>
+
+<details>
+<summary>
+EN:  
+</summary>
+
+# Frenquency Control System 
+
+## Description
+
+A minimalist frequency control system that goes beyond conventional frequency control functionalities. Adding features that facilitate work on both sides, employee and supervisor, such as user registration, time clock entries, time records visualization, occurrence or leave registration, time reports, schedule configuration, among various features that may arise after testing, feedback, and needs. I aim to sell this project, along with consulting and support for interested companies.
+
+### Motivation
+
+One day I was using my company's frequency control system and, as always, I was unsatisfied with the slow, unstable system, with its unfriendly and unintuitive interface. So I decided to create a system that would be simpler and easier to use.
+
+## Technologies Used
+
+### Core
+
+- Next.js with TypeScript - React framework for web development
+- Tailwind CSS - Utility-first CSS framework
+- Supabase - Backend as a Service (BaaS) and authentication
+
+### UI and Components
+
+- Shadcn/ui - Component library based on Radix UI
+- Lucide-react - Icon library
+- Next-themes - Light/dark theme management
+
+### Forms and Validation
+
+- React-hook-form - Form management
+- Zod - Data validation and typing
+
+### Utilities
+
+- Sonner - Toast notification system
+
+## Knowledge acquired/applied
+
+- HTTP methods, along with creation, management and consumption of APIs, to integrate the database
+- CRUD concepts
+- Interface development, considering responsiveness and main UI/UX practices
+- Authentication and authorization concepts
+- Database concepts, table relationships and queries
+- Security concepts, sensitive data handling, data persistence, and sessions, using verifications and warnings
+- Testing and mock concepts
+- Deploy and CI/CD concepts
+- Project management with Git and GitHub
+
+## To do
+
+- [ ] Login
+  - Already done the database part and verifications, just need to improve the login interface
+- [ ] User registration (through external app)
+  - [ ] Probably through a menu that appears for supervisors
+- [ ] Time clock entry
+  - [ ] Along with this comes the actions that the system does automatically, as we have each user's workload, if the entry is made after departure time or before entry time, the system registers it as late or early departure, I think only for the supervisor in the report
+- [ ] Time records visualization
+  - [ ] Create user session persistence after login
+- [ ] Register occurrences in time records (leaves)
+- [ ] Time reports
+  - [ ] According to workload when the report is generated, it shows the calculation of hours worked - hours not worked = hours to be paid
+  - [ ] Show delays and early departures
+  - [ ] Show leaves and absences
+- [ ] Schedule configuration
+  - [ ] Create a schedule configuration page (supervisor part)
+- [ ] Show calendar with holidays and working days, using a calendar API
+</details>
