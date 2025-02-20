@@ -5,7 +5,7 @@ PT-BR:
 
 # Sistema de Ponto
 
-## Descrição
+### Descrição
 
 Um sistema de ponto eletrônico minimalista. Que vai além das funcionalidades de um sistema de ponto convencional. Adicionando funcionalidades que facilitam o trabalho dos dois lados, o funcionário e o supervisor, como cadastro de usuários, cadastro de ponto, visualização de pontos, registro de ocorrências ou afastamentos, relatórios de ponto, configuração de horários, dentre várias funcionalidades que podem nascer após testes, feedbacks e necessidades. Miro vender este projeto, junto da consultoria e suporte para empresas interessadas.
 
@@ -50,11 +50,12 @@ Um dia estava usando o sistema de ponto da empresa que trabalho e como sempre, e
 
 ## Para fazer
 
-- [ ] Login
-  - Já fiz a parte da database e as verificações, só falta melhorar a interface de login.
-- [ ] Cadastro de usuário(por meio de app externo)
-  - [ ] Acho que por meio de um menu que aparece para os supervisores.
+- [ ] Login(feito, só fica para revisão e adições visuais)
+- [ ] Cadastro de usuário
+  - [ ] Acho que por meio de um menu que aparece para  no dashboard principal, mas só pode ser acessado pelo supervisor.
 - [ ] Cadastro de ponto
+  - [ ] Pensar no design, acho que um botão para registrar um usuário, um botão para editar o usuário, um botão para deletar o usuário(esse tem que ter uma confirmação, como senha ou código).
+    - [ ] Dividir a página em duas, uma com os botões, outra com uma tela mostrando atualizações como último usuário registrado, junto com horário, id e supervisor que o registrou.
   - [ ] Junto com esse vem as ações que o sistema faz atumaticamente, pois temos a carga horária de cada usuário, se o ponto for feito após o horário de saída ou antes do horário de entrada, o sistema registra como atraso ou saída adiantada, acho que só para o supervisor no relatório.
 - [ ] Visualização de pontos
   - [ ] Criar parte de persistir a sessão do usuário após o login.
@@ -66,6 +67,11 @@ Um dia estava usando o sistema de ponto da empresa que trabalho e como sempre, e
 - [ ] Configuração de horários
   - [ ] Criar uma página de configuração de horários.(parte do supervisor)
 - [ ] Mostrar calendário com feriados e dias úteis, usando uma api de calendário.
+- [ ] Criar página de informações, com guia do sistema para o usuário comum, pois o supervisor é repassado para a gerência.
+  - [ ] Adicionar uma parte sobre a estabilidade do sistema, status do sistema, versão do sistema, contato com o suporte.
+  - [ ] Adicionar uma parte sobre a empresa, como propósito, missão, visão, valores.
+  - [ ] Adicionar uma parte sobre o criador do sistema, como nome, contato, redes sociais.
+
 </details>
 
 <details>
@@ -73,9 +79,9 @@ Um dia estava usando o sistema de ponto da empresa que trabalho e como sempre, e
 EN:  
 </summary>
 
-# Frenquency Control System 
+# Frenquency Control System
 
-## Description
+### Description
 
 A minimalist frequency control system that goes beyond conventional frequency control functionalities. Adding features that facilitate work on both sides, employee and supervisor, such as user registration, time clock entries, time records visualization, occurrence or leave registration, time reports, schedule configuration, among various features that may arise after testing, feedback, and needs. I aim to sell this project, along with consulting and support for interested companies.
 

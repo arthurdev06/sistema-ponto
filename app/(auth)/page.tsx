@@ -1,22 +1,20 @@
 "use client";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { createSupabaseClient } from "@/utils/supabase/server";
-import { toast, Toaster } from "sonner";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   username: z
@@ -32,6 +30,7 @@ const formSchema = z.object({
 });
 
 export default function Home() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,7 +50,11 @@ export default function Home() {
         .single();
 
       if (!existingUser) {
-        toast.error("Usuário não cadastrado");
+        toast({
+          variant: "destructive",
+          title: "Erro",
+          description: "Usuário não cadastrado",
+        });
         return;
       }
 
@@ -63,21 +66,28 @@ export default function Home() {
         .single();
 
       if (error || !user) {
-        toast.error("Senha incorreta");
+        toast({
+          variant: "destructive",
+          title: "Erro",
+          description: "Senha incorreta",
+        });
         return;
       }
 
       sessionStorage.setItem("userId", user.id.toString());
-      window.location.href = "/ponto";
+      window.location.href = "/bem-vindo";
     } catch (error) {
       console.error("Erro geral:", error);
-      toast.error("Ocorreu um erro ao tentar fazer login");
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Ocorreu um erro ao tentar fazer login",
+      });
     }
   }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-inter)]">
-      <Toaster richColors position="top-center" />
       <header className="row-start-1 flex gap-6 flex-wrap items-center justify-center">
         <h1 className="text-4xl font-bold">Sistema de Ponto</h1>
       </header>
