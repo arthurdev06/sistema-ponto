@@ -10,11 +10,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { url } from "inspector";
 import {
   AlarmPlusIcon,
+  ChartNoAxesColumn,
+  ChartNoAxesCombined,
   FileTextIcon,
   HomeIcon,
   InfoIcon,
+  LogOut,
+  ReceiptText,
+  TreePalm,
   UserPlusIcon,
 } from "lucide-react";
 import { DiGithubBadge } from "react-icons/di";
@@ -25,6 +31,21 @@ const items = [
     title: "Página Inicial",
     url: "/bem-vindo",
     icon: HomeIcon,
+  },
+  {
+    title: "Painel",
+    url: "/painel",
+    icon: ChartNoAxesCombined,
+  },
+  {
+    title: "Recesso",
+    url: "/recesso",
+    icon: TreePalm,
+  },
+  {
+    title: "Recisão",
+    url: "/recisao",
+    icon: ReceiptText,
   },
   {
     title: "Ponto",
@@ -49,6 +70,15 @@ const items = [
 ];
 
 export function AppSidebar() {
+
+  function Logout() {
+    return () => {
+      localStorage.removeItem("supabase.auth.token");
+      window.location.reload();
+      window.location.href = "/";
+    };
+  }
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -71,6 +101,12 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <LogOut />
+                <button onClick={Logout()} >Sair</button>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
         <SidebarGroup />

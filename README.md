@@ -71,6 +71,18 @@ Um dia estava usando o sistema de ponto da empresa que trabalho e como sempre, e
   - [ ] Adicionar uma parte sobre a estabilidade do sistema, status do sistema, versão do sistema, contato com o suporte.
   - [ ] Adicionar uma parte sobre a empresa, como propósito, missão, visão, valores.
   - [ ] Adicionar uma parte sobre o criador do sistema, como nome, contato, redes sociais.
+- [ ] Adicionar página para recesso para o funcionário agendar o seu recesso, que é enviado para o supervisor por meio do sistema de notificações
+- [ ] Adicionar página para recisão de contrato para o funcionário pedir sua recisão que também é enviado para o supervisor por meio do sistema de notificações
+- [ ] Adicionar um painel com todos os funcionáriospara os supervisores conseguirem:
+  - [ ] Este painel terá uma tabela com as notificações em cima para mostrar coisas recentes como os agendamentos de afastamentos, recessos, solicitações de afastamento, etc e avisos automáticos que o sistema mostrará, como abrimento da folha de pagamento, feriados, greves, avisos.
+    - [ ] Adicionar afastamentos, como também editar a folha de ponto
+    - [ ] Ver relatórios
+    - [ ] Ver status de recisão e recesso
+    - [ ] Adicionar advertências
+    - [ ] Notificar o funcionário de algo, aviso ou solicitação
+    - [ ] Cortar o pagamento
+    - [ ] Solicitar o afastamento
+- [ ] Todas essas funcionalidades integradas com um sistema de notificações
 
 </details>
 
