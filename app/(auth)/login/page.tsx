@@ -15,7 +15,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
-import login from "./actions";
+import { login, signup } from "./actions";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z
@@ -30,6 +31,7 @@ const formSchema = z.object({
 });
 
 export default function Login() {
+  const router = useRouter();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,16 +40,34 @@ export default function Login() {
       password: "",
     },
   });
+  
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const formData = new FormData();
+      formData.append("email", values.email);
+      formData.append("password", values.password);
+      const result = await login(formData);
+      
+      if (result.error) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: result.error,
+        });
+        return;
+      }
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // esta acontecendo um erro do caramba aqui, Unhandled Runtime Error, comecei a tentar resolver as 22:55 e são 1:03 quando irei desistir, mas amanhã vou tentar novamente
-    const formData = new FormData();
-    formData.append("email", values.email);
-    formData.append("password", values.password);
-
-    login(formData);
+      if (result.success) {
+        router.push("/");
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Algo deu errado. Por favor, tente novamente.",
+      });
+    }
   }
-
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-inter)]">
       <header className="row-start-1 flex gap-6 flex-wrap items-center justify-center">

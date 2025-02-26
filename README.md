@@ -50,9 +50,11 @@ Um dia estava usando o sistema de ponto da empresa que trabalho e como sempre, e
 
 ## Para fazer
 
-- [ ] Login(feito, só fica para revisão e adições visuais)
+- [ ] Login estava feito a parte do client, mas tiver que refazer para o server
+  - [ ] Tenho que ajustar erros com credenciais inválidas
 - [ ] Cadastro de usuário
-  - [ ] Acho que por meio de um menu que aparece para  no dashboard principal, mas só pode ser acessado pelo supervisor.
+  - [ ] Acho que por meio de um menu que aparece para o dashboard principal, mas só pode ser acessado pelo supervisor.
+  - [ ] Tenho que adicionar todos os campos da tabela e tenho que cadastrar um usuário para ver se os erros de credenciais persistem
 - [ ] Cadastro de ponto
   - [ ] Pensar no design, acho que um botão para registrar um usuário, um botão para editar o usuário, um botão para deletar o usuário(esse tem que ter uma confirmação, como senha ou código).
     - [ ] Dividir a página em duas, uma com os botões, outra com uma tela mostrando atualizações como último usuário registrado, junto com horário, id e supervisor que o registrou.

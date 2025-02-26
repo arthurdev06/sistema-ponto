@@ -10,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { url } from "inspector";
 import {
   AlarmPlusIcon,
   ChartNoAxesColumn,
@@ -71,14 +70,6 @@ const items = [
 
 export function AppSidebar() {
 
-  function Logout() {
-    return () => {
-      localStorage.removeItem("supabase.auth.token");
-      window.location.reload();
-      window.location.href = "/";
-    };
-  }
-
   return (
     <Sidebar>
       <SidebarHeader>
@@ -104,7 +95,7 @@ export function AppSidebar() {
             <SidebarMenuItem>
               <SidebarMenuButton>
                 <LogOut />
-                <button onClick={Logout()} >Sair</button>
+                  <p>Sair</p>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
