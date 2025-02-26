@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Form,
   FormControl,
@@ -13,77 +14,38 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { createSupabaseClient } from "@/utils/supabase/server";
 import { useToast } from "@/hooks/use-toast";
+import login from "./actions";
 
 const formSchema = z.object({
-  username: z
+  email: z
     .string()
-    .min(2, { message: "O nome de usuário deve ter no mínimo 2 caracteres." })
-    .max(50, {
-      message: "O nome de usuário deve ter no máximo 50 caracteres.",
-    }),
+    .email()
+    .min(8, { message: "O email deve ter no mínimo 8 caracteres." })
+    .max(50, { message: "O email deve ter no máximo 50 caracteres." }),
   password: z
     .string()
     .min(8, { message: "A senha deve ter no mínimo 8 caracteres." })
     .max(50, { message: "A senha deve ter no máximo 50 caracteres." }),
 });
 
-export default function Home() {
+export default function Login() {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      const supabase = createSupabaseClient();
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // esta acontecendo um erro do caramba aqui, Unhandled Runtime Error, comecei a tentar resolver as 22:55 e são 1:03 quando irei desistir, mas amanhã vou tentar novamente
+    const formData = new FormData();
+    formData.append("email", values.email);
+    formData.append("password", values.password);
 
-      const { data: existingUser, error: checkError } = await supabase
-        .from("users")
-        .select("id")
-        .eq("username", values.username)
-        .single();
-
-      if (!existingUser) {
-        toast({
-          variant: "destructive",
-          title: "Erro",
-          description: "Usuário não cadastrado",
-        });
-        return;
-      }
-
-      const { data: user, error } = await supabase
-        .from("users")
-        .select("id, username")
-        .eq("username", values.username)
-        .eq("password", values.password)
-        .single();
-
-      if (error || !user) {
-        toast({
-          variant: "destructive",
-          title: "Erro",
-          description: "Senha incorreta",
-        });
-        return;
-      }
-
-      sessionStorage.setItem("userId", user.id.toString());
-      window.location.href = "/bem-vindo";
-    } catch (error) {
-      console.error("Erro geral:", error);
-      toast({
-        variant: "destructive",
-        title: "Erro",
-        description: "Ocorreu um erro ao tentar fazer login",
-      });
-    }
+    login(formData);
   }
 
   return (
@@ -94,20 +56,20 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8 w-[300px]"
+            onSubmit={form.handleSubmit(onSubmit)}
           >
             <div className="space-y-8">
               <FormField
                 control={form.control}
-                name="username"
+                name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nome de usuário</FormLabel>
+                    <FormLabel>Email de usuário</FormLabel>
                     <FormControl>
                       <Input
                         className="max-w-[300px]"
-                        placeholder="Digite seu nome de usuário"
+                        placeholder="Digite seu email"
                         {...field}
                       />
                     </FormControl>

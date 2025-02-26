@@ -9,7 +9,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main>
+    <main suppressHydrationWarning>
       <SidebarProvider>
         <AppSidebar />
         <ThemeProvider

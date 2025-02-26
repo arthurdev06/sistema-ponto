@@ -1,5 +1,14 @@
-export default function Cadastro() {
-  return <div>Cadastro</div>;
+import { redirect } from "next/navigation";
+
+import { createClient } from "@/utils/supabase/server";
+
+export default async function Cadastro() {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data?.user) {
+    redirect("/login");
+  }
+
+  return <p>Cadastro</p>;
 }
-
-
